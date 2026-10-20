@@ -165,7 +165,6 @@ function Rectangle(width, height) {
     },
   };
 }
-// throw new Error('Not implemented');
 
 /**
  * Returns the JSON representation of specified object
@@ -180,7 +179,6 @@ function Rectangle(width, height) {
 function getJSON(obj) {
   return JSON.stringify(obj);
 }
-// throw new Error('Not implemented');
 
 /**
  * Returns the object of specified type from JSON representation
@@ -193,9 +191,10 @@ function getJSON(obj) {
  *    const r = fromJSON(Circle.prototype, '{"radius":10}');
  *
  */
-function fromJSON(/* proto, json */) {
-  throw new Error('Not implemented');
+function fromJSON(proto, json) {
+  return Object.assign(Object.create(proto), JSON.parse(json));
 }
+// throw new Error('Not implemented');
 
 /**
  * Sorts the specified array by country name first and city name
