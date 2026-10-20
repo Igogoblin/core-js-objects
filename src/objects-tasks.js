@@ -194,7 +194,6 @@ function getJSON(obj) {
 function fromJSON(proto, json) {
   return Object.assign(Object.create(proto), JSON.parse(json));
 }
-// throw new Error('Not implemented');
 
 /**
  * Sorts the specified array by country name first and city name
@@ -227,9 +226,24 @@ function fromJSON(proto, json) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  return arr.sort((a, b) => {
+    if (a.country < b.country) {
+      return -1;
+    }
+    if (a.country > b.country) {
+      return 1;
+    }
+    if (a.city < b.city) {
+      return -1;
+    }
+    if (a.city > b.city) {
+      return 1;
+    }
+    return 0;
+  });
 }
+// throw new Error('Not implemented');
 
 /**
  * Groups elements of the specified array by key.
