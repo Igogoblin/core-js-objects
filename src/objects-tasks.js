@@ -52,6 +52,7 @@ function mergeObjects(/* objects */) {
 function removeProperties(/* obj, keys */) {
   throw new Error('Not implemented');
 }
+//  throw new Error('Not implemented');
 
 /**
  * Compares two source objects. Returns true if the objects are equal and false otherwise.
@@ -65,8 +66,8 @@ function removeProperties(/* obj, keys */) {
  *    compareObjects({a: 1, b: 2}, {a: 1, b: 2}) => true
  *    compareObjects({a: 1, b: 2}, {a: 1, b: 3}) => false
  */
-function compareObjects(/* obj1, obj2 */) {
-  throw new Error('Not implemented');
+function compareObjects(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
 }
 
 /**
