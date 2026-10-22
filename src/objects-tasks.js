@@ -139,9 +139,31 @@ function makeWord(lettersObject) {
  *    sellTickets([25, 25, 50]) => true
  *    sellTickets([25, 100]) => false (The seller does not have enough money to give change.)
  */
-function sellTickets(/* queue */) {
-  throw new Error('Not implemented');
+function sellTickets(queue) {
+  let twentyFives = 0;
+  let fifties = 0;
+
+  return queue.every((bill) => {
+    if (bill === 25) {
+      twentyFives += 1;
+    } else if (bill === 50) {
+      if (twentyFives === 0) return false;
+      twentyFives -= 1;
+      fifties += 1;
+    } else if (bill === 100) {
+      if (fifties > 0 && twentyFives > 0) {
+        fifties -= 1;
+        twentyFives -= 1;
+      } else if (twentyFives >= 3) {
+        twentyFives -= 3;
+      } else {
+        return false;
+      }
+    }
+    return true;
+  });
 }
+// throw new Error('Not implemented');
 
 /**
  * Returns the rectangle object with width and height parameters and getArea() method
@@ -292,7 +314,6 @@ function group(array, keySelector, valueSelector) {
     return acc;
   }, new Map());
 }
-// throw new Error('Not implemented');
 
 /**
  * Css selectors builder
